@@ -11,8 +11,13 @@ function App() {
     <>
       <BrowserRouter>
         <Header />
-        <PlayerName />
-        <Game />
+        <Routes>
+          {/*  / blir default (den som alltid syns) */}
+          <Route path="/" element={<PlayerName />} />
+          {/* <Route path="/navigation" element={<Homepage />} />
+          <Route path="/openGames" element={<ListOpenGames />} /> */}
+          <Route path="/game" element={<Game />} />
+        </Routes>
       </BrowserRouter>
     </>
   )

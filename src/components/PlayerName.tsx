@@ -4,6 +4,9 @@ const PlayerName = () => {
 
     const [name, setName] = useState('')
 
+    // fetch token
+    // fetch username
+
     return (
         <>
             <div className="playerName-div">
