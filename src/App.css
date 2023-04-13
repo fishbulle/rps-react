@@ -1,44 +1,88 @@
  @import url('https://fonts.googleapis.com/css2?family=DynaPuff&display=swap');
- 
+
  :root {
-  font-family: DynaPuff, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  margin: 0 auto;
-  padding: 2rem;
-  background-color: #FFE3DB;
-}
+   font-family: DynaPuff, system-ui, Avenir, Helvetica, Arial, sans-serif;
+   margin: 0 auto;
+   padding: 2rem;
+   background-color: rgb(255, 227, 219);
+ }
 
-h1 {
-  font-size: 2.2em;
-  color: rgb(128, 96, 55);
-}
+ h1 {
+   font-size: 2.2em;
+   color: rgb(128, 96, 55);
+ }
 
-header {
-  font-size: 5rem;
-  color: rgb(255, 255, 255);
-}
+ header {
+   font-size: 5rem;
+   color: rgb(255, 255, 255);
+ }
 
-.header-div {
-  display: flex;
-  justify-content: center;
-}
+ input {
+   width: 30%;
+   height: 50px;
+   font-size: 2rem;
+   font-family: Arial, Helvetica, sans-serif;
+   padding-left: 0.2em;
+ }
 
-/* RESPONSIVE */
+ label {
+   color: rgb(140, 99, 56);
+   padding: 1rem;
+   font-size: 1.5rem;
+ }
 
-@media (max-width: 800px) {
+ ::placeholder {
+   opacity: 0.5;
+   font-family: Arial, Helvetica, sans-serif;
+   font-style: italic;
+   padding-left: 0.2em;
+ }
 
-  header {
-      font-size: 3rem;
-    }
-}
+ .header-div {
+   display: flex;
+   justify-content: center;
+   padding-bottom: 2em;
+ }
 
-@media (max-width: 600px) {
-  header {
-    font-size: 2rem;
-  }
-}
+ .playerName-div {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   margin: 2em;
+ }
 
-@media (max-width: 400px) {
-  header {
-    font-size: 1.4rem;
-  }
-}
+ .playButton {
+   border: 2px solid rgb(20, 14, 5);
+   border-radius: 5%;
+   background-color: rgb(251, 176, 59);
+   color: rgb(255, 255, 255);
+   font-size: 2rem;
+   height: 60px;
+   width: 200px;
+   margin-top: 0.5em;
+ }
+
+ .playButton:hover {
+   background-color: rgb(255, 205, 140);
+ }
+
+ /* RESPONSIVE */
+
+ @media (max-width: 800px) {
+
+   header {
+     font-size: 3rem;
+   }
+ }
+
+ @media (max-width: 600px) {
+   header {
+     font-size: 2rem;
+   }
+ }
+
+ @media (max-width: 400px) {
+   header {
+     font-size: 1.4rem;
+   }
+ }
