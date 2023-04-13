@@ -4,3 +4,10 @@
   padding: 2rem;
   text-align: center;
 }
+
+body {
+  display: flex;
+  place-items: end;
+  min-width: 320px;
+  min-height: 100vh;
+}
