@@ -52,10 +52,11 @@
  }
 
  .playButton {
-   border: 2px solid rgb(20, 14, 5);
+   border: none;
    border-radius: 5%;
    background-color: rgb(251, 176, 59);
    color: rgb(255, 255, 255);
+   font-family: DynaPuff, Arial;
    font-size: 2rem;
    height: 60px;
    width: 200px;
