@@ -4,12 +4,13 @@ import scissors from '../../assets/scissors.png'
 import './game.css'
 import { useState } from 'react'
 
-const Game = () => {
+function Game() {
 
-    const [sign, setSign] = useState('')
-
-    // metod för fetch sign
-    console.log(sign);
+    // metod för fetch post sign
+    const handleChoice = (choice: string) => {
+        
+        // axios.post bla bla (sign)
+    }
 
 
     return (
@@ -17,9 +18,9 @@ const Game = () => {
             {/* ska köras vid vinst */}
             {/* <Fireworks /> */}
             <div className="icons">
-                <img id="rock" src={rock} onClick={() => setSign('rock')}></img>
-                <img id="paper" src={paper} onClick={() => setSign('paper')}></img>
-                <img id="scissors" src={scissors} onClick={() => setSign('scissors')}></img>
+                <img id="rock" src={rock} onClick={() => handleChoice('rock')}></img>
+                <img id="paper" src={paper} onClick={() => handleChoice('paper')}></img>
+                <img id="scissors" src={scissors} onClick={() => handleChoice('scissors')}></img>
             </div>
         </>
     )

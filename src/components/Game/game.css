@@ -2,8 +2,10 @@
     display: flex;
     justify-content: space-evenly;
     place-items: end;
-    min-width: 320px;
-    min-height: 100vh;
+    min-height: 85vh;
+    /* ändra denna eftersom fler element läggs till på "spelplanen" */
+    max-width: 50%;
+    margin: auto;
 }
 
 #rock,
@@ -126,14 +128,32 @@
 }
 
 /* RESPONSIVE DESIGN */
-@media (max-width: 600px) {
-
+@media (max-width: 800px) {
     .icons {
-        width: 50%;
-        justify-self: center;
+        max-width: 100%;
+    }
+
+    img {
+        width: 20%;
+    }
+}
+
+@media (max-width: 600px) {
+    .icons {
+        max-width: 100%;
     }
 
     img {
         width: 30%;
+    }
+}
+
+@media (max-width: 400px) {
+    .icons {
+        max-width: 100%;
+    }
+
+    img {
+        width: 25%;
     }
 }
