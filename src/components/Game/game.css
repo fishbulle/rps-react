@@ -1,0 +1,11 @@
+#rock,
+#paper,
+#scissors {
+    position: relative;
+}
+
+#rock:hover,
+#paper:hover,
+#scissors:hover {
+    bottom: 50px;
+}
