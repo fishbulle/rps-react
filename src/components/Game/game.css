@@ -1,3 +1,7 @@
+#choice {
+    display: inline-block;
+}
+
 #rock,
 #paper,
 #scissors {
