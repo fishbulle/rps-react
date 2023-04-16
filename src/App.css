@@ -1,24 +1,38 @@
  @import url('https://fonts.googleapis.com/css2?family=DynaPuff&display=swap');
 
  :root {
+   --pink: rgb(255, 227, 219);
+   --brown: rgb(140, 99, 56);
+   --orange: rgb(251, 176, 59);
+   --light-orange: rgb(255, 205, 140);
+   --white: rgb(255, 255, 255);
    font-family: DynaPuff, system-ui, Avenir, Helvetica, Arial, sans-serif;
    margin: 0 auto;
    padding: 2rem;
-   background-color: rgb(255, 227, 219);
+   background-color: var(--pink);
+ }
+
+ a {
+   text-decoration: none;
+   color: var(--orange);
+ }
+
+ a:hover {
+   color: var(--light-orange);
  }
 
  h1 {
-   font-size: 2.2em;
-   color: rgb(128, 96, 55);
+   font-size: 2em;
+   color: var(--brown);
  }
 
  header {
    font-size: 5rem;
-   color: rgb(255, 255, 255);
+   color: var(--white);
  }
 
  input {
-   width: 30%;
+   width: 50%;
    height: 50px;
    font-size: 2rem;
    font-family: Arial, Helvetica, sans-serif;
@@ -26,9 +40,10 @@
  }
 
  label {
-   color: rgb(140, 99, 56);
+   color: var(--brown);
    padding: 1rem;
    font-size: 1.5rem;
+   width: 50%;
  }
 
  ::placeholder {
@@ -49,14 +64,24 @@
    flex-direction: column;
    align-items: center;
    margin: 2em;
-   padding-top: 5rem;
+   padding-top: 4rem;
+ }
+
+ .cats-div {
+   display: flex;
+   justify-content: center;
+ }
+
+ .cats-img {
+   max-width: 20%;
+   height: auto;
  }
 
  .playButton {
    border: none;
    border-radius: 5%;
-   background-color: rgb(251, 176, 59);
-   color: rgb(255, 255, 255);
+   background-color: var(--orange);
+   color: var(--white);
    font-family: DynaPuff, Arial;
    font-size: 2rem;
    height: 60px;
@@ -65,7 +90,24 @@
  }
 
  .playButton:hover {
-   background-color: rgb(255, 205, 140);
+   background-color: var(--light-orange);
+ }
+
+ .menu-div {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding-top: 5em;
+ }
+
+ .menu-list {
+   list-style-type: none;
+   padding: 1em;
+   font-size: 1.5em;
+ }
+
+ .menu-list li {
+   padding-bottom: 0.5em;
  }
 
  /* RESPONSIVE */
