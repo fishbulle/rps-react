@@ -1,8 +1,43 @@
+.pick {
+    display: flex;
+    justify-content: center;
+}
+
+.player-names {
+    display: flex;
+    justify-content: space-around;
+    max-width: 50%;
+    margin: 0 auto;
+    padding-top: 4em;
+}
+
+.boxes {
+    display: flex;
+    justify-content: space-around;
+    max-width: 50%;
+    margin: 0 auto;
+    padding-top: 1em;
+}
+
+.white-box {
+    background-color: rgb(255, 255, 255);
+    height: 200px;
+    width: 200px;
+    border: 1px solid black;
+}
+
+.boxes p {
+    font-size: 10em;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+
 .icons {
     display: flex;
     justify-content: space-evenly;
     place-items: end;
-    min-height: 85vh;
+    min-height: 45vh;
     /* ändra denna eftersom fler element läggs till på "spelplanen" */
     max-width: 50%;
     margin: auto;
@@ -19,9 +54,6 @@
 #scissors:hover {
     bottom: 30px;
 }
-
-
-
 
 /* FIREWORKS EFFECT */
 .pyro>.before,
@@ -129,6 +161,11 @@
 
 /* RESPONSIVE DESIGN */
 @media (max-width: 800px) {
+    .player-names {
+        justify-content: space-around;
+        max-width: 100%;
+    }
+
     .icons {
         max-width: 100%;
     }
@@ -136,24 +173,79 @@
     img {
         width: 20%;
     }
+
+    .boxes {
+        max-width: 100%;
+    }
+
+    .white-box {
+        height: 150px;
+        width: 150px;
+    }
+
+    .boxes p {
+        font-size: 8em;
+    }
 }
 
 @media (max-width: 600px) {
+    .pick {
+        font-size: 0.8em;
+    }
+
+    .player-names {
+        justify-content: space-around;
+        max-width: 100%;
+    }
+
     .icons {
+        min-height: 40vh;
         max-width: 100%;
     }
 
     img {
         width: 30%;
     }
+
+    .boxes {
+        max-width: 100%;
+        padding-top: 2em;
+    }
+
+    .boxes p {
+        font-size: 8em;
+    }
 }
 
 @media (max-width: 400px) {
+    .pick {
+        font-size: 0.5em;
+    }
+
+    .player-names {
+        justify-content: space-around;
+        max-width: 100%;
+    }
+
     .icons {
         max-width: 100%;
     }
 
     img {
         width: 25%;
+    }
+
+    .boxes {
+        max-width: 100%;
+        padding-top: 2em;
+    }
+
+    .white-box {
+        height: 100px;
+        width: 100px;
+    }
+
+    .boxes p {
+        font-size: 5em;
     }
 }

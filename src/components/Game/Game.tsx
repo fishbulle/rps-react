@@ -8,13 +8,28 @@ function Game() {
 
     // metod för fetch post sign
     const handleChoice = (choice: string) => {
-        
+
         // axios.post bla bla (sign)
     }
 
 
     return (
         <>
+            <div className="pick">
+                <h2>What will you choose?</h2>
+            </div>
+            <div className="player-names">
+                <div className="player">PLAYER 1</div>
+                <div className="player">PLAYER 2</div>
+            </div>
+            <div className="boxes">
+                <div className="white-box">
+                    <p className="p1">R</p>
+                </div>
+                <div className="white-box">
+                    <p className="p2">S</p>
+                </div>
+            </div>
             {/* ska köras vid vinst */}
             {/* <Fireworks /> */}
             <div className="icons">
