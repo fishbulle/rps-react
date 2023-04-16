@@ -19,8 +19,8 @@ function Game() {
                 <h2>What will you choose?</h2>
             </div>
             <div className="player-names">
-                <div className="player">PLAYER 1</div>
-                <div className="player">PLAYER 2</div>
+                <div className="player1">PLAYER 1</div>
+                <div className="player2">PLAYER 2</div>
             </div>
             <div className="boxes">
                 <div className="white-box">
