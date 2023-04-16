@@ -6,9 +6,9 @@ const Homepage = () => (
     <div className="menu-div">
         <h1>What would you like to do?</h1>
         <div className="menu-list"><li>
-            <a href="#">
+            <Link to="/game">
                 Start a new game
-            </a>
+            </Link>
         </li>
             <li>
                 <Link to="/openGames">
