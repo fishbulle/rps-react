@@ -1,4 +1,3 @@
-// main navigation page with options for joining an open game or starting a new one
 import cats from '../assets/cats.png'
 import { Link } from "react-router-dom";
 

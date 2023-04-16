@@ -12,6 +12,11 @@ function Game() {
         // axios.post bla bla (sign)
     }
 
+    // setInterval för att uppdatera spelet (som stopwatchen)
+    // usernames
+    // spelarnas val
+    // köra fireworks efter avslutad runda
+
 
     return (
         <>
@@ -19,7 +24,7 @@ function Game() {
                 <h2>What will you choose?</h2>
             </div>
             {/* ska köras vid vinst */}
-            <Fireworks />
+            {/* <Fireworks /> */}
             <div className="player-names">
                 <div className="player1">PLAYER 1 WINS!</div> {/** if (playerOne status win) username + 'wins!' */}
                 <div className="player">PLAYER 2</div>
