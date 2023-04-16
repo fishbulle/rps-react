@@ -18,9 +18,11 @@ function Game() {
             <div className="pick">
                 <h2>What will you choose?</h2>
             </div>
+            {/* ska köras vid vinst */}
+            <Fireworks />
             <div className="player-names">
-                <div className="player1">PLAYER 1</div>
-                <div className="player2">PLAYER 2</div>
+                <div className="player1">PLAYER 1 WINS!</div> {/** if (playerOne status win) username + 'wins!' */}
+                <div className="player">PLAYER 2</div>
             </div>
             <div className="boxes">
                 <div className="white-box">
@@ -30,8 +32,7 @@ function Game() {
                     <p className="p2">S</p>
                 </div>
             </div>
-            {/* ska köras vid vinst */}
-            {/* <Fireworks /> */}
+            
             <div className="icons">
                 <img id="rock" src={rock} onClick={() => handleChoice('rock')}></img>
                 <img id="paper" src={paper} onClick={() => handleChoice('paper')}></img>
