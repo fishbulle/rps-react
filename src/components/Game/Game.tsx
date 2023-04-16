@@ -26,10 +26,10 @@ function Game() {
             </div>
             <div className="boxes">
                 <div className="white-box">
-                    <p className="p1">R</p>
+                    <p className="p1">R</p> {/** visa drag genom bokstav */}
                 </div>
                 <div className="white-box">
-                    <p className="p2">S</p>
+                    <p className="p2"></p>
                 </div>
             </div>
             
