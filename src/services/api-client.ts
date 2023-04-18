@@ -1,7 +1,7 @@
-import axios from 'axios'
+import axios, { CanceledError } from 'axios'
 
-const client = axios.create({
+export default axios.create({
     baseURL: 'http://localhost:8080/rps'
 })
 
-export default client
+export { CanceledError }
