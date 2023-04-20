@@ -1,9 +1,5 @@
 import apiClient from "./api-client";
 
-interface Entity {
-    id: number
-}
-
 class HttpService {
     endpoint: string
 
@@ -33,8 +29,8 @@ class HttpService {
     }
 
     // fetch post metoder (username, start game )
-    create<T>(headers?: string, entity?: T) {
-        return apiClient.post(this.endpoint + '/create', entity, {
+    create<T>(headers?: string, body?: T) {
+        return apiClient.post(this.endpoint + '/create', body, {
             headers: {
                 token: sessionStorage.getItem('token')
             }
@@ -42,8 +38,8 @@ class HttpService {
     }
 
     // fetch put (join game, move)
-    update<T>(headers?: string, pathVariable?: string, entity?: T) {
-        return apiClient.put(this.endpoint + '/update/' + pathVariable, entity, {
+    update<T>(headers?: string, pathVariable?: string, body?: T) {
+        return apiClient.put(this.endpoint + '/update/' + pathVariable, body, {
             headers: {
                 token: sessionStorage.getItem('token')
             }
