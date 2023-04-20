@@ -41,7 +41,7 @@ const PlayerName = () => {
                 <input
                     id="username"
                     type="text"
-                    placeholder="zelda"
+                    placeholder="*meow*"
                     value={name}
                     onChange={e => setName(e.target.value)} required />
                 <button className="playButton" onClick={() => handleUsername(name)}>Let's Play!</button>
