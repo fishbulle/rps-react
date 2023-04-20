@@ -14,16 +14,40 @@ class HttpService {
     getAll<T>() {
         const controller = new AbortController();
         const request = apiClient.get<T[]>(this.endpoint)
-
         return { request, cancel: () => controller.abort() }
     }
 
-    create<T>(entity: T) {
-        return apiClient.post(this.endpoint, entity)
+    // fetch token
+    getToken() {
+        return apiClient.get(this.endpoint + '/token')
     }
 
-    update<T extends Entity>(entity: T) {
-        return apiClient.put(this.endpoint + '/' + entity.id, entity)
+    // fetch game info
+    getInfo() {
+        return apiClient.get(this.endpoint + '/gameInfo', {
+            headers: {
+                token: sessionStorage.getItem('token'),
+                gameId: sessionStorage.getItem('gameId')
+            }
+        })
+    }
+
+    // fetch post metoder (username, start game )
+    create<T>(headers?: string, entity?: T) {
+        return apiClient.post(this.endpoint + '/create', entity, {
+            headers: {
+                token: sessionStorage.getItem('token')
+            }
+        })
+    }
+
+    // fetch put (join game, move)
+    update<T>(headers?: string, pathVariable?: string, entity?: T) {
+        return apiClient.put(this.endpoint + '/update/' + pathVariable, entity, {
+            headers: {
+                token: sessionStorage.getItem('token')
+            }
+        })
     }
 }
 
