@@ -4,13 +4,13 @@ import { CanceledError } from "axios"
 
 
 const usePlayer = () => {
-    const [players, setPlayers] = useState<Player[]>([])
+    const [player, setPlayer] = useState<Player[]>([])
     const [error, setError] = useState('')
     
     useEffect(() => {
         const { request, cancel } = playerService.getAll<Player>()
         request
-            .then(res => setPlayers(res.data))
+            .then(res => setPlayer(res.data))
             .catch(err => {
                 if (err instanceof CanceledError) return
                 setError(err.message)
@@ -19,7 +19,7 @@ const usePlayer = () => {
         return () => cancel()
     }, [])
 
-    return { players, setPlayers, error, setError }
+    return { player, setPlayer, error, setError }
 }
 
 export default usePlayer

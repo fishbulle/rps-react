@@ -28,7 +28,7 @@ class HttpService {
         })
     }
 
-    // fetch post metoder (username, start game )
+    // fetch post metoder (username, start game)
     create<T>(headers?: string, body?: T) {
         return apiClient.post(this.endpoint + '/create', body, {
             headers: {
