@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
 import cats from '../assets/cats.png'
-import playerService, { Player } from "../services/player-service"
+import playerService from "../services/player-service"
 import usePlayer from "../hooks/usePlayer"
 
 
 const PlayerName = () => {
-    const { player, setPlayer, error, setError } = usePlayer()
+    const { setPlayer, error, setError } = usePlayer()
     const [token, setToken] = useState('')
     const [username, setUsername] = useState('')
 
@@ -15,7 +15,7 @@ const PlayerName = () => {
         playerService.getToken()
             .then(res => setToken(res.data))
     }, [setToken])
-    
+
     sessionStorage.setItem('token', token)
 
     // fetch username
