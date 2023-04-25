@@ -6,14 +6,16 @@ import gameService, { Game } from '../services/game-service'
 const ListOpenGames = () => {
 
     // fetch GET opengames och mappa till listan
-    const { games, setError } = useGames()
+    const { games, setGames, error, setError } = useGames()
     const [gameId, setGameId] = useState('')
 
     const handleJoinGame = (game: Game) => {
         // fetch joinGame
-        gameService.add(game.gameId)
+        gameService.add(game.gameId, undefined)
         .then(res => {
+            console.log(res.data)
             setGameId(res.data.gameId)
+            setGames(res.data)
             sessionStorage.setItem('gameId', res.data.gameId)
         })
         .catch(error => setError(error.message))
@@ -23,6 +25,7 @@ const ListOpenGames = () => {
 
     return (
         <div className="menu-div">
+            {error && <p>Something went wrong!</p>}
             <h1>What game would you like to join?</h1>
             <div className="menu-list">
                 {games.map(game => 

@@ -2,24 +2,26 @@ import rock from '../../assets/rock.png'
 import paper from '../../assets/paper.png'
 import scissors from '../../assets/scissors.png'
 import './game.css'
-import { useState } from 'react'
+import gameService from '../../services/game-service'
+import useGames from '../../hooks/useGames'
+
 
 function Game() {
+    const { games, setGames, error, setError } = useGames()
 
     // metod för fetch post sign
     const handleChoice = (choice: string) => {
-
-        // axios.post bla bla (sign)
+        gameService.update(choice)
+        .then(res => {
+            setGames(res.data.sign)
+            console.log(res.data)
+        })
+        .catch(error => setError(error.message))
     }
-
-    // setInterval för att uppdatera spelet (som stopwatchen)
-    // usernames
-    // spelarnas val
-    // köra fireworks efter avslutad runda
-
 
     return (
         <>
+            <center>{error && <p>Something went wrong!</p>}</center>
             <div className="pick">
                 <h2>What will you choose?</h2>
             </div>
