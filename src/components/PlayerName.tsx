@@ -15,6 +15,7 @@ const PlayerName = () => {
         playerService.getToken()
             .then(res => setToken(res.data))
     }, [setToken])
+    
     sessionStorage.setItem('token', token)
 
     // fetch username
