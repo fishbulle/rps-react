@@ -1,43 +1,41 @@
 import cats from '../assets/cats.png'
 import { Link } from "react-router-dom";
-import client from '../services/api-client';
-import { useState } from 'react';
+import gameService from '../services/game-service';
+import useGames from '../hooks/useGames';
 
-// const [gameId, setGameId] = useState('')
-// const [error, setError] = useState('')
+const Homepage = () => {
+    const { setGames, setError } = useGames()
 
-// fetch POST startGame
-// lägga till onClick på Link to game (så nytt spel startas)
-// const handleStartGame = () => {
-    // client.post('/start', {
-    //     headers: {
-    //         token: sessionStorage.getItem('token')
-    //     }
-    // })
-    //     .then(res => setGameId(res.data))
-    //     .catch(err => setError(err.message))
+    const handleStartGame = () => {
+        // fetch POST startGame
+        gameService.create(undefined, null)
+            .then(res => setGames(res.data))
+            .catch(error => setError(error.message))
 
-    // location.assign('/game')
-// }
+        location.assign('/game')
+    }
 
-const Homepage = () => (
-    <div className="menu-div">
-        <h1>What would you like to do?</h1>
-        <div className="menu-list"><li>
-            <a href='#' onClick={() => console.log('play!')}>
-                Start a new game
-            </a>
-        </li>
-            <li>
-                <Link to="/openGames">
-                    Join an open game
-                </Link>
-            </li>
-        </div>
-        <div className="cats-div">
-            <img className="cats-img" src={cats} alt="Four cute cartoon cats" />
-        </div>
-    </div>
-)
+    return (
+        <>
+            <div className="menu-div">
+                <h1>What would you like to do?</h1>
+                <div className="menu-list"><li>
+                    <a href='#' onClick={() => handleStartGame()}>
+                        Start a new game
+                    </a>
+                </li>
+                    <li>
+                        <Link to="/openGames">
+                            Join an open game
+                        </Link>
+                    </li>
+                </div>
+                <div className="cats-div">
+                    <img className="cats-img" src={cats} alt="Four cute cartoon cats" />
+                </div>
+            </div>
+        </>
+    )
+}
 
 export default Homepage
