@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import cats from '../assets/cats.png'
 import useGames from '../hooks/useGames'
 import gameService, { Game } from '../services/game-service'
@@ -5,12 +6,16 @@ import gameService, { Game } from '../services/game-service'
 const ListOpenGames = () => {
 
     // fetch GET opengames och mappa till listan
-    const { games, setGames, error, setError } = useGames()
+    const { games, setError } = useGames()
+    const [gameId, setGameId] = useState('')
 
     const handleJoinGame = (game: Game) => {
         // fetch joinGame
-        gameService.update(game.gameId)
-        .then(res => setGames(res.data))
+        gameService.add(game.gameId)
+        .then(res => {
+            setGameId(res.data.gameId)
+            sessionStorage.setItem('gameId', res.data.gameId)
+        })
         .catch(error => setError(error.message))
 
         location.assign('/game')

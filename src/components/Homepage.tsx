@@ -10,7 +10,7 @@ const Homepage = () => {
 
     const handleStartGame = () => {
         // fetch POST startGame
-        gameService.create(undefined)
+        gameService.create()
             .then(res => {
                 console.log(res.data)
                 setGameId(res.data.gameId)

@@ -37,8 +37,18 @@ class HttpService {
         })
     }
 
-    // fetch put (join game, move)
-    update<T>(path?: string, body?: T,) {
+    // fetch put (joinGame)
+    add<T>(path?: string, body?:T) {
+        return apiClient.put(this.endpoint + '/add/' + path, body, {
+            headers: {
+                token: sessionStorage.getItem('token'),
+                gameId: sessionStorage.getItem('gameId')
+            }
+        })
+    }
+
+    // fetch put (move)
+    update<T>(path?: string, body?: T) {
         return apiClient.put(this.endpoint + '/update/' + path, body, {
             headers: {
                 token: sessionStorage.getItem('token'),
