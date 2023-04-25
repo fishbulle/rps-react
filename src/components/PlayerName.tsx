@@ -19,8 +19,11 @@ const PlayerName = () => {
 
     // fetch username
     const handleUsername = (username: string) => {
+        const newUser = {
+            username: username
+        }
 
-        playerService.create(token, username)
+        playerService.create(undefined, newUser)
             .then(res => setPlayer(res.data.username))
             .catch(err => setError(err.message))
 
@@ -38,7 +41,7 @@ const PlayerName = () => {
                     placeholder="*meow*"
                     value={username}
                     onChange={e => setUsername(e.target.value)} required />
-                <button className="playButton" onClick={() =>handleUsername(username)}>Let's Play!</button>
+                <button className="playButton" onClick={() => handleUsername(username)}>Let's Play!</button>
             </div>
             <div className="cats-div">
                 <img className="cats-img" src={cats} alt="Four cute cartoon cats" />
