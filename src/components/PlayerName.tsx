@@ -5,7 +5,7 @@ import usePlayer from "../hooks/usePlayer"
 
 
 const PlayerName = () => {
-    const {player, setPlayer, error, setError } = usePlayer()
+    const { player, setPlayer, error, setError } = usePlayer()
     const [token, setToken] = useState('')
     const [username, setUsername] = useState('')
 
@@ -27,7 +27,8 @@ const PlayerName = () => {
             .then(res => setPlayer(res.data.username))
             .catch(err => setError(err.message))
 
-        // location.assign('/homepage')
+        sessionStorage.setItem('username', username)
+        location.assign('/homepage')
     }
 
     return (
