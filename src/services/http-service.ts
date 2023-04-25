@@ -38,7 +38,7 @@ class HttpService {
     }
 
     // fetch put (joinGame)
-    add<T>(path?: string, body?: string) {
+    add<T>(path?: string, body?: T) {
         return apiClient.put(this.endpoint + '/add/' + path, body, {
             headers: {
                 token: sessionStorage.getItem('token')
