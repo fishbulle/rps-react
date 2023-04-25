@@ -12,9 +12,8 @@ const Homepage = () => {
         // fetch POST startGame
         gameService.create()
             .then(res => {
-                console.log(res.data)
                 setGameId(res.data.gameId)
-                setGames(res.data)
+                setGames(res.data.gameId)
                 sessionStorage.setItem('gameId', res.data.gameId)
             })
             .catch(error => setError(error.message))
