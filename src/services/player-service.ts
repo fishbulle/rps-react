@@ -1,7 +1,7 @@
 import create from "./http-service"
 
 export interface Player {
-    playerId: number,
+    playerId: string,
     username: string
 }
 

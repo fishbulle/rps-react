@@ -2,16 +2,22 @@ import cats from '../assets/cats.png'
 import { Link } from "react-router-dom";
 import gameService from '../services/game-service';
 import useGames from '../hooks/useGames';
+import { useState } from 'react';
 
 const Homepage = () => {
     const { setGames, setError } = useGames()
+    const [gameId, setGameId] = useState('')
 
     const handleStartGame = () => {
         // fetch POST startGame
-        gameService.create(undefined, null)
-            .then(res => setGames(res.data))
+        gameService.create(undefined)
+            .then(res => {
+                setGameId(res.data.gameId)
+                setGames(res.data)
+            })
             .catch(error => setError(error.message))
 
+        sessionStorage.setItem('gameId', gameId)
         location.assign('/game')
     }
 

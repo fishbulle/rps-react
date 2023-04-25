@@ -24,7 +24,7 @@ const PlayerName = () => {
             username: username
         }
 
-        playerService.create(undefined, newUser)
+        playerService.create(newUser)
             .then(res => setPlayer(res.data.username))
             .catch(err => setError(err.message))
 

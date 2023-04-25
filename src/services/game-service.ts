@@ -2,7 +2,7 @@ import { Player } from "./player-service"
 import create from "./http-service"
 
 export interface Game {
-    gameId: number
+    gameId: string
     playerOne: Player
     playerOneMove: string
     playerTwo: Player

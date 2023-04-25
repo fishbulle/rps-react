@@ -29,7 +29,7 @@ class HttpService {
     }
 
     // fetch post metoder (username, start game)
-    create<T>(headers?: string, body?: T) {
+    create<T>(body?: T) {
         return apiClient.post(this.endpoint + '/create', body, {
             headers: {
                 token: sessionStorage.getItem('token')
@@ -38,10 +38,11 @@ class HttpService {
     }
 
     // fetch put (join game, move)
-    update<T>(headers?: string, pathVariable?: string, body?: T) {
-        return apiClient.put(this.endpoint + '/update/' + pathVariable, body, {
+    update<T>(path?: string, body?: T,) {
+        return apiClient.put(this.endpoint + '/update/' + path, body, {
             headers: {
-                token: sessionStorage.getItem('token')
+                token: sessionStorage.getItem('token'),
+                gameId: sessionStorage.getItem('gameId')
             }
         })
     }
