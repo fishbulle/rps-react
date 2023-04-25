@@ -12,12 +12,13 @@ const Homepage = () => {
         // fetch POST startGame
         gameService.create(undefined)
             .then(res => {
+                console.log(res.data)
                 setGameId(res.data.gameId)
                 setGames(res.data)
+                sessionStorage.setItem('gameId', res.data.gameId)
             })
             .catch(error => setError(error.message))
 
-        sessionStorage.setItem('gameId', gameId)
         location.assign('/game')
     }
 
