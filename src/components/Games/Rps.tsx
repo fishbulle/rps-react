@@ -2,36 +2,45 @@ import rock from '../../assets/rock.png'
 import paper from '../../assets/paper.png'
 import scissors from '../../assets/scissors.png'
 import './game.css'
-import gameService, { Game } from '../../services/game-service'
+import gameService from '../../services/game-service'
 import useGames from '../../hooks/useGames'
-
+import { useState } from 'react'
 
 function Rps() {
     const { games, setGames, error, setError } = useGames()
+    const [disabled, setDisabled] = useState(true)
+    const [player1, setPlayer1] = useState('')
+    const [player2, setPlayer2] = useState('')
+    const [player1Move, setPlayer1Move] = useState('')
+    const [player2Move, setPlayer2Move] = useState('')
 
-    // gameService.getInfo()
-    //     .then(res => {
-    //         if (res.data.playerTwo === null)
-    //             // disable icons
-    //         else
-    //             // enable icons
-    //     })
-
+    // fetch players (usernames)
+    gameService.getInfo()
+    .then(res => {
+        setPlayer1(res.data.playerOne.username)
+        
+        if (res.data.playerTwo !== null)
+            setPlayer2(res.data.playerTwo.username)
+    })
+    .catch(error => setError(error.message))
 
     // metod för fetch post sign
     const handleChoice = (choice: string) => {
-
         const newMove = {
             gameId: sessionStorage.getItem('gameId')
         }
 
         gameService.update(choice, newMove)
-        .then(res => {
-            setGames(res.data.sign)
-            console.log(res.data)
-        })
-        .catch(error => setError(error.message))
+            .then(res => {
+                setGames(res.data.sign)
+                setPlayer1Move(res.data.playerOneMove)
+                setPlayer2Move(res.data.playerTwoMove)
+                console.log(res.data)
+            })
+            .catch(error => setError(error.message))
     }
+
+
 
     return (
         <>
@@ -42,18 +51,19 @@ function Rps() {
             {/* ska köras vid vinst */}
             {/* <Fireworks /> */}
             <div className="player-names">
-                <div className="player1">PLAYER 1 WINS!</div> {/** if (playerOne status win) username + 'wins!' */}
-                <div className="player">PLAYER 2</div>
+                <p className="player1">{player1}</p> {/** if (playerOne status win) username + 'wins!' */}
+                <p className="player2">{player2 ? player2 : 'Waiting for opponent....'}</p>
             </div>
+
             <div className="boxes">
                 <div className="white-box">
-                    <p className="p1">R</p> {/** visa drag genom bokstav */}
+                    <p className="p1">{player1Move}</p>
                 </div>
                 <div className="white-box">
-                    <p className="p2"></p>
+                    <p className="p2">{player2Move}</p>
                 </div>
             </div>
-            
+
             <div className="icons">
                 <img id="rock" src={rock} onClick={() => handleChoice('rock')}></img>
                 <img id="paper" src={paper} onClick={() => handleChoice('paper')}></img>
