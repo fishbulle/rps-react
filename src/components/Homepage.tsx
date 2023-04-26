@@ -13,7 +13,7 @@ const Homepage = () => {
         gameService.create()
             .then(res => {
                 setGameId(res.data.gameId)
-                setGames(res.data.gameId)
+                setGames(res.data)
                 sessionStorage.setItem('gameId', res.data.gameId)
             })
             .catch(error => setError(error.message))

@@ -1,5 +1,5 @@
 import './App.css'
-import Game from './components/Games/Game'
+import Game from './components/Games/Rps'
 import { Header } from './components/Header'
 import PlayerName from './components/PlayerName'
 import Homepage from './components/Homepage'

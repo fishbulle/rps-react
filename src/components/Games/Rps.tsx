@@ -2,16 +2,20 @@ import rock from '../../assets/rock.png'
 import paper from '../../assets/paper.png'
 import scissors from '../../assets/scissors.png'
 import './game.css'
-import gameService from '../../services/game-service'
+import gameService, { Game } from '../../services/game-service'
 import useGames from '../../hooks/useGames'
 
 
-function Game() {
+function Rps() {
     const { games, setGames, error, setError } = useGames()
 
     // metod för fetch post sign
     const handleChoice = (choice: string) => {
-        gameService.update(choice)
+        const newMove = {
+            gameId: sessionStorage.getItem('gameId')
+        }
+
+        gameService.update(choice, newMove)
         .then(res => {
             setGames(res.data.sign)
             console.log(res.data)
@@ -60,4 +64,4 @@ const Fireworks = () => {
     );
 }
 
-export default Game
+export default Rps

@@ -50,8 +50,7 @@ class HttpService {
     update<T>(path?: string, body?: T) {
         return apiClient.post(this.endpoint + '/update/' + path, body, {
             headers: {
-                token: sessionStorage.getItem('token'),
-                gameId: sessionStorage.getItem('gameId')
+                token: sessionStorage.getItem('token')
             }
         })
     }
