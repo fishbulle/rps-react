@@ -5,7 +5,6 @@ import gameService, { Game } from '../services/game-service'
 
 const ListOpenGames = () => {
 
-    // fetch GET opengames och mappa till listan
     const { games, setGames, error, setError } = useGames()
     const [gameId, setGameId] = useState('')
 
@@ -17,10 +16,9 @@ const ListOpenGames = () => {
             setGameId(res.data.gameId)
             setGames(res.data)
             sessionStorage.setItem('gameId', res.data.gameId)
+            location.assign('/game')
         })
         .catch(error => setError(error.message))
-
-        location.assign('/game')
     }
 
     return (

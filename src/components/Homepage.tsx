@@ -15,10 +15,9 @@ const Homepage = () => {
                 setGameId(res.data.gameId)
                 setGames(res.data)
                 sessionStorage.setItem('gameId', res.data.gameId)
+                location.assign('/game')
             })
             .catch(error => setError(error.message))
-
-        location.assign('/game')
     }
 
     return (

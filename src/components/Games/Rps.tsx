@@ -9,8 +9,18 @@ import useGames from '../../hooks/useGames'
 function Rps() {
     const { games, setGames, error, setError } = useGames()
 
+    // gameService.getInfo()
+    //     .then(res => {
+    //         if (res.data.playerTwo === null)
+    //             // disable icons
+    //         else
+    //             // enable icons
+    //     })
+
+
     // metod för fetch post sign
     const handleChoice = (choice: string) => {
+
         const newMove = {
             gameId: sessionStorage.getItem('gameId')
         }
