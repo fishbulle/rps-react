@@ -4,11 +4,10 @@ import scissors from '../../assets/scissors.png'
 import './game.css'
 import gameService from '../../services/game-service'
 import useGames from '../../hooks/useGames'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function Rps() {
     const { games, setGames, error, setError } = useGames()
-    const [disabled, setDisabled] = useState(true)
     const [player1, setPlayer1] = useState('')
     const [player2, setPlayer2] = useState('')
     const [player1Move, setPlayer1Move] = useState('')
@@ -18,7 +17,7 @@ function Rps() {
     gameService.getInfo()
     .then(res => {
         setPlayer1(res.data.playerOne.username)
-        
+
         if (res.data.playerTwo !== null)
             setPlayer2(res.data.playerTwo.username)
     })
@@ -35,12 +34,15 @@ function Rps() {
                 setGames(res.data.sign)
                 setPlayer1Move(res.data.playerOneMove)
                 setPlayer2Move(res.data.playerTwoMove)
-                console.log(res.data)
             })
             .catch(error => setError(error.message))
     }
 
-
+    useEffect(() => {
+        gameService.getInfo()
+            .then(res => console.log(res.data))
+            .catch(error => setError(error.message))
+    }, [player2, player1Move, player2Move]) 
 
     return (
         <>
@@ -52,7 +54,7 @@ function Rps() {
             {/* <Fireworks /> */}
             <div className="player-names">
                 <p className="player1">{player1}</p> {/** if (playerOne status win) username + 'wins!' */}
-                <p className="player2">{player2 ? player2 : 'Waiting for opponent....'}</p>
+                <p className="player2">{player2 ? player2 : 'Opponent missing'}</p>
             </div>
 
             <div className="boxes">
