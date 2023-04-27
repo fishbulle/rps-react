@@ -37,7 +37,7 @@ const ListOpenGames = () => {
 
     return (
         <div className="menu-div">
-            {error && <p>Something went wrong!</p>}
+            {error && <p>Oops, looks like there are no open games :( </p>}
             <h1>What game would you like to join?</h1>
             <div className="menu-list">
                 {games.map(game => 
