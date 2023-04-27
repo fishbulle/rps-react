@@ -8,6 +8,7 @@ import './game.css'
 import gameService from '../../services/game-service'
 import useGames from '../../hooks/useGames'
 import { useEffect, useState } from 'react'
+import { FaExclamation } from 'react-icons/fa'
 
 function Rps() {
     const { games, setGames, error, setError } = useGames()
@@ -63,19 +64,22 @@ function Rps() {
         <>
             <center>{error && <p>Something went wrong!</p>}</center>
             <div className="container">
-                <div className="pick">
+                <div className="rules">
                     <h2>What will you choose?</h2>
-                </div>
-                <div className="player-names">
-                    <p className="player1">{player1}</p>
-                    <p className="player2">{player2 ? player2 : 'Opponent missing'}</p>
+                    <p><FaExclamation /> rock beats scissors, scissors beats paper, paper beats rock</p>
                 </div>
                 <div className="boxes">
-                    <div className="white-box">
-                        <p className="p1">{player1Move}</p>
+                    <div className="box-1">
+                        <p className="player1">{player1}</p>
+                        <div className="white-box">
+                            <p className="p1">{player1Move}</p>
+                        </div>
                     </div>
-                    <div className="white-box">
-                        <p className="p2">{player2Move}</p>
+                    <div className="box-2">
+                        <p className="player2">{player2 ? player2 : 'Opponent missing'}</p>
+                        <div className="white-box">
+                            <p className="p2">{player2Move}</p>
+                        </div>
                     </div>
                 </div>
                 <div className="result">

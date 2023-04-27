@@ -9,25 +9,44 @@ button {
     height: 100%;
 }
 
-.pick {
+.rules {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
-.player-names {
-    display: flex;
-    justify-content: space-around;
-    max-width: 50%;
-    margin: 0 auto;
-    padding-top: 4em;
+.rules h2 {
+    padding-top: 1em;
+    margin: 0;
+}
+
+.rules p {
+    color: rgb(255, 205, 140);
 }
 
 .boxes {
     display: flex;
-    justify-content: space-around;
+    flex-direction: row;
+    justify-content: space-evenly;
     max-width: 50%;
     margin: 0 auto;
-    padding-top: 1em;
+    padding-top: 2em;
+}
+
+.box-1 p,
+.box-2 p {
+    display: flex;
+    justify-content: center;
+}
+
+.p1,
+.p2 {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 2.5em;
+    margin: 0 auto;
+    padding-top: 2em;
 }
 
 .white-box {
@@ -35,14 +54,6 @@ button {
     height: 200px;
     width: 200px;
     border: 1px solid black;
-}
-
-.boxes p {
-    display: flex;
-    justify-content: space-evenly;
-    font-size: 2.5em;
-    margin: 0 auto;
-    padding-top: 2em;
 }
 
 .icons {
@@ -235,7 +246,6 @@ button {
 
 /* RESPONSIVE DESIGN */
 @media (max-width: 800px) {
-
     .player-names {
         justify-content: space-around;
         max-width: 100%;
@@ -264,7 +274,7 @@ button {
 }
 
 @media (max-width: 600px) {
-    .pick {
+    .rules {
         font-size: 0.8em;
     }
 
@@ -298,7 +308,7 @@ button {
 }
 
 @media (max-width: 400px) {
-    .pick {
+    .rules {
         font-size: 0.5em;
     }
 
