@@ -18,6 +18,10 @@ class HttpService {
         return apiClient.get(this.endpoint + '/token')
     }
 
+    getOpen() {
+        return apiClient.get(this.endpoint)
+    }
+
     // fetch game info
     getInfo() {
         return apiClient.get(this.endpoint + '/gameInfo', {

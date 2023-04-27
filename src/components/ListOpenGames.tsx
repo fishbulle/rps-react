@@ -1,13 +1,26 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { BsFillBalloonHeartFill } from 'react-icons/bs';
 import cats from '../assets/cats.png'
 import useGames from '../hooks/useGames'
 import gameService, { Game } from '../services/game-service'
 
 const ListOpenGames = () => {
-
     const { games, setGames, error, setError } = useGames()
     const [gameId, setGameId] = useState('')
+
+    useEffect(() => {
+        const fetchGameOpen = () => {
+            gameService.getOpen().then(res => setGames(res.data))
+        }
+
+        const interval = setInterval(() => {
+            fetchGameOpen()
+        }, 1000)
+
+        fetchGameOpen()
+
+        return () => clearInterval(interval)
+    }, [])
 
     const handleJoinGame = (game: Game) => {
         // fetch joinGame
