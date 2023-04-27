@@ -2,11 +2,9 @@ import rock from '../../assets/rock.png'
 import paper from '../../assets/paper.png'
 import scissors from '../../assets/scissors.png'
 import './game.css'
-import gameService, { Game } from '../../services/game-service'
+import gameService from '../../services/game-service'
 import useGames from '../../hooks/useGames'
 import { useEffect, useState } from 'react'
-import { useQuery } from '@tanstack/react-query'
-import axios from 'axios'
 
 function Rps() {
     const { games, setGames, error, setError } = useGames()
@@ -42,17 +40,6 @@ function Rps() {
         return () => clearInterval(interval)
     }, [])
 
-    // fetch players (usernames)
-    // gameService.getInfo()
-    // .then(res => {
-    //     setPlayer1(res.data.playerOne.username)
-    //     setResult(res.data.result)
-
-    //     if (res.data.playerTwo !== null)
-    //         setPlayer2(res.data.playerTwo.username)
-    // })
-    // .catch(error => setError(error.message))
-
     // fetch post sign
     const handleChoice = (choice: string) => {
         const newMove = {
@@ -87,7 +74,7 @@ function Rps() {
                 </div>
             </div>
             <div className="win">
-                {/* nån from av logik för att ta reda på vinnaren och köra fireworks */}
+                {/* vinnaren möts av fina fireworks */}
                 {result === 'WIN' ? <Fireworks /> : ''}
             </div>
             <div className="icons">
