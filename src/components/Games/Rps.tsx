@@ -1,6 +1,9 @@
 import rock from '../../assets/rock.png'
 import paper from '../../assets/paper.png'
 import scissors from '../../assets/scissors.png'
+import winner from '../../assets/winner.png'
+import loser from '../../assets/loser.png'
+import draw from '../../assets/draw.png'
 import './game.css'
 import gameService from '../../services/game-service'
 import useGames from '../../hooks/useGames'
@@ -59,33 +62,49 @@ function Rps() {
     return (
         <>
             <center>{error && <p>Something went wrong!</p>}</center>
-            <div className="pick">
-                <h2>What will you choose?</h2>
-            </div>
-            <div className="player-names">
-                <p className="player1">{player1}</p>
-                <p className="player2">{player2 ? player2 : 'Opponent missing'}</p>
-            </div>
-            <div className="boxes">
-                <div className="white-box">
-                    <p className="p1">{player1Move}</p>
+            <div className="container">
+                <div className="pick">
+                    <h2>What will you choose?</h2>
                 </div>
-                <div className="white-box">
-                    <p className="p2">{player2Move}</p>
+                <div className="player-names">
+                    <p className="player1">{player1}</p>
+                    <p className="player2">{player2 ? player2 : 'Opponent missing'}</p>
+                </div>
+                <div className="boxes">
+                    <div className="white-box">
+                        <p className="p1">{player1Move}</p>
+                    </div>
+                    <div className="white-box">
+                        <p className="p2">{player2Move}</p>
+                    </div>
+                </div>
+                <div className="result">
+                    {/* winner */}
+                    {result === 'WIN' ? (
+                        <>
+                            <Fireworks />
+                            <img src={winner} alt="winner" className="zoomInDown" />
+                        </>
+                    ) : null}
+                    {/* loser */}
+                    {result === 'LOSE' ? (
+                        <img src={loser} alt="loser" className="zoomInDown" />
+                    ) : null}
+                    {/* draw */}
+                    {result === 'DRAW' ? (
+                        <img src={draw} alt="draw" className="zoomInDown" />
+                    ) : null}
                 </div>
             </div>
-            <div className="win">
-                {/* vinnaren möts av fina fireworks */}
-                {result === 'WIN' ? <Fireworks /> : ''}
-            </div>
+
             <div className="icons">
-                <button disabled={playerMove ? true : false} onClick={() => handleChoice('rock')}>
+                <button onClick={() => handleChoice('rock')}>
                     <img id="rock" src={rock}></img>
                 </button>
-                <button disabled={playerMove ? true : false} onClick={() => handleChoice('paper')}>
+                <button onClick={() => handleChoice('paper')}>
                     <img id="paper" src={paper}></img>
                 </button>
-                <button disabled={playerMove ? true : false} onClick={() => handleChoice('scissors')}>
+                <button onClick={() => handleChoice('scissors')}>
                     <img id="scissors" src={scissors}></img>
                 </button>
             </div>
