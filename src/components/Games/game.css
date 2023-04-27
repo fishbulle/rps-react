@@ -1,3 +1,8 @@
+button {
+    border: none;
+    background-color: rgb(255, 227, 219);
+}
+
 .pick {
     display: flex;
     justify-content: center;

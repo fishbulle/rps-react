@@ -10,6 +10,7 @@ function Rps() {
     const { games, setGames, error, setError } = useGames()
     const [player1, setPlayer1] = useState('')
     const [player2, setPlayer2] = useState('')
+    const [playerMove, setPlayerMove] = useState(false)
     const [player1Move, setPlayer1Move] = useState('')
     const [player2Move, setPlayer2Move] = useState('')
     const [result, setResult] = useState('')
@@ -78,9 +79,15 @@ function Rps() {
                 {result === 'WIN' ? <Fireworks /> : ''}
             </div>
             <div className="icons">
-                <img id="rock" src={rock} onClick={() => handleChoice('rock')}></img>
-                <img id="paper" src={paper} onClick={() => handleChoice('paper')}></img>
-                <img id="scissors" src={scissors} onClick={() => handleChoice('scissors')}></img>
+                <button disabled={playerMove ? true : false} onClick={() => handleChoice('rock')}>
+                    <img id="rock" src={rock}></img>
+                </button>
+                <button disabled={playerMove ? true : false} onClick={() => handleChoice('paper')}>
+                    <img id="paper" src={paper}></img>
+                </button>
+                <button disabled={playerMove ? true : false} onClick={() => handleChoice('scissors')}>
+                    <img id="scissors" src={scissors}></img>
+                </button>
             </div>
         </>
     )
