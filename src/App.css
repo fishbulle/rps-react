@@ -22,6 +22,10 @@
    color: var(--light-orange);
  }
 
+ li {
+  color: rgb(44, 43, 40);
+ }
+
  h1 {
    font-size: 2em;
    color: var(--brown);

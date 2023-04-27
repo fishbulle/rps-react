@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { BsFillBalloonHeartFill } from 'react-icons/bs';
 import cats from '../assets/cats.png'
 import useGames from '../hooks/useGames'
 import gameService, { Game } from '../services/game-service'
@@ -27,9 +28,10 @@ const ListOpenGames = () => {
             <h1>What game would you like to join?</h1>
             <div className="menu-list">
                 {games.map(game => 
-                    <li key={game.gameId}>
+                    <li key={game.gameId}>Play with
                         <a href='#'
-                        onClick={() => handleJoinGame(game)}>{game.playerOne.username}: {game.status}</a>
+                            onClick={() => handleJoinGame(game)}> {game.playerOne.username} </a>
+                        <BsFillBalloonHeartFill />
                     </li>
                     )}
             </div>
