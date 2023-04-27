@@ -79,7 +79,7 @@ button {
 
 .result img {
     height: 500%;
-    margin-top: -25%;
+    margin-top: -15%;
 }
 
 
@@ -87,8 +87,8 @@ button {
 .pyro>.before,
 .pyro>.after {
     position: absolute;
-    width: 5px;
-    height: 5px;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
     box-shadow: -120px -218.66667px blue, 248px -16.66667px #00ff84,
         190px 16.33333px #002bff, -113px -308.66667px #ff009d,
@@ -158,32 +158,32 @@ button {
 
     0%,
     19.9% {
-        margin-top: 15%;
-        margin-left: 40%;
+        margin-top: 5%;
+        margin-left: 20%;
     }
 
     20%,
     39.9% {
-        margin-top: 20%;
-        margin-left: 45%;
+        margin-top: 10%;
+        margin-left: 25%;
     }
 
     40%,
     59.9% {
-        margin-top: 30%;
-        margin-left: 50%;
+        margin-top: 20%;
+        margin-left: 30%;
     }
 
     60%,
     79.9% {
-        margin-top: 25%;
-        margin-left: 55%;
+        margin-top: 15%;
+        margin-left: 35%;
     }
 
     80%,
     99.9% {
-        margin-top: 20%;
-        margin-left: 50%;
+        margin-top: 10%;
+        margin-left: 30%;
     }
 }
 
@@ -235,6 +235,7 @@ button {
 
 /* RESPONSIVE DESIGN */
 @media (max-width: 800px) {
+
     .player-names {
         justify-content: space-around;
         max-width: 100%;
@@ -244,8 +245,8 @@ button {
         max-width: 100%;
     }
 
-    img {
-        width: 20%;
+    .icons img {
+        width: 100%;
     }
 
     .boxes {
@@ -277,8 +278,8 @@ button {
         max-width: 100%;
     }
 
-    img {
-        width: 30%;
+    .icons img {
+        width: 100%;
     }
 
     .boxes {
@@ -288,6 +289,11 @@ button {
 
     .boxes p {
         font-size: 2em;
+    }
+
+    .result img {
+        height: 400%;
+        margin-top: -80%;
     }
 }
 
@@ -305,8 +311,8 @@ button {
         max-width: 100%;
     }
 
-    img {
-        width: 25%;
+    .icons img {
+        width: 100%;
     }
 
     .boxes {
@@ -321,5 +327,10 @@ button {
 
     .boxes p {
         font-size: 1em;
+    }
+
+    .result img {
+        height: 400%;
+        margin-top: -80%;
     }
 }
