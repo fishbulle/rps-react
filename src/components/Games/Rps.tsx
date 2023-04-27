@@ -13,11 +13,11 @@ import { FaExclamation } from 'react-icons/fa'
 function Rps() {
     const { games, setGames, error, setError } = useGames()
     const [player1, setPlayer1] = useState('')
-    const [player2, setPlayer2] = useState('')
-    const [playerMove, setPlayerMove] = useState(false)
+    const [player2, setPlayer2] = useState(null)
     const [player1Move, setPlayer1Move] = useState('')
     const [player2Move, setPlayer2Move] = useState('')
     const [result, setResult] = useState('')
+    const [disable, setDisable] = useState(false)
 
     useEffect(() => {
         const fetchGameInfo = () => {
@@ -58,11 +58,11 @@ function Rps() {
                 setPlayer2Move(res.data.playerTwoMove)
             })
             .catch(error => setError(error.message))
-    }
+    }        
 
     return (
         <>
-            <center>{error && <p>Something went wrong!</p>}</center>
+            <center>{error && <p>You have to wait for another player to connect....</p>}</center>
             <div className="container">
                 <div className="rules">
                     <h2>What will you choose?</h2>
@@ -102,13 +102,13 @@ function Rps() {
             </div>
 
             <div className="icons">
-                <button onClick={() => handleChoice('rock')}>
+                <button disabled={disable} onClick={() => handleChoice('rock')}>
                     <img id="rock" src={rock}></img>
                 </button>
-                <button onClick={() => handleChoice('paper')}>
+                <button disabled={disable} onClick={() => handleChoice('paper')}>
                     <img id="paper" src={paper}></img>
                 </button>
-                <button onClick={() => handleChoice('scissors')}>
+                <button disabled={disable} onClick={() => handleChoice('scissors')}>
                     <img id="scissors" src={scissors}></img>
                 </button>
             </div>
