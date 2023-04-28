@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react'
 import { FaExclamation } from 'react-icons/fa'
 
 function Rps() {
-    const { games, setGames, error, setError } = useGames()
+    const { setGames, error, setError } = useGames()
     const [player, setPlayer] = useState('')
     const [opponent, setOpponent] = useState(null)
     const [playerOneMove, setPlayerMove] = useState('')
@@ -24,7 +24,6 @@ function Rps() {
             gameService.getInfo().then(res => {
                 setGames(res.data)
                 setPlayer(res.data.playerOne.username)
-                console.log(res.data)
 
                 if (res.data.playerTwo !== null) {
                     setOpponent(res.data.playerTwo.username)
