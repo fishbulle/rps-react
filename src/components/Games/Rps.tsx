@@ -17,7 +17,7 @@ function Rps() {
     const [player1Move, setPlayer1Move] = useState('')
     const [player2Move, setPlayer2Move] = useState('')
     const [result, setResult] = useState('')
-    const [disable, setDisable] = useState(true)
+    const [disable, setDisable] = useState(false)
 
     useEffect(() => {
         const fetchGameInfo = () => {
@@ -30,9 +30,9 @@ function Rps() {
                     setPlayer2Move(res.data.playerTwoMove)
                     console.log(res.data)
 
-                    if (res.data.playerOne && res.data.playerTwo)
+                    if (res.data.playerTwo !== null) {
                         setPlayer2(res.data.playerTwo.username)
-                        setDisable(false)
+                    }
                 })
                 .catch(error => setError(error.message))
         }
@@ -46,6 +46,7 @@ function Rps() {
         return () => clearInterval(interval)
     }, [])
 
+
     // fetch post sign
     const handleChoice = (choice: string) => {
         const newMove = {
@@ -55,14 +56,9 @@ function Rps() {
         gameService.update(choice, newMove)
             .then(res => {
                 setGames(res.data.sign)
-                setPlayer1Move(res.data.playerOneMove)
-                setPlayer2Move(res.data.playerTwoMove)
             })
             .catch(error => setError(error.message))
-
-        if (player1Move || player2Move)
-            setDisable(true)
-    }        
+    }
 
     return (
         <>
@@ -106,13 +102,28 @@ function Rps() {
             </div>
 
             <div className="icons">
-                <button disabled={disable} onClick={() => handleChoice('rock')}>
+                <button
+                    disabled={disable}
+                    onClick={() => {
+                        handleChoice('rock')
+                        setDisable(true)
+                    }}>
                     <img id="rock" src={rock}></img>
                 </button>
-                <button disabled={disable} onClick={() => handleChoice('paper')}>
+                <button
+                    disabled={disable}
+                    onClick={() => {
+                        handleChoice('paper')
+                        setDisable(true)
+                    }}>
                     <img id="paper" src={paper}></img>
                 </button>
-                <button disabled={disable} onClick={() => handleChoice('scissors')}>
+                <button
+                    disabled={disable}
+                    onClick={() => {
+                        handleChoice('scissors')
+                        setDisable(true)
+                    }}>
                     <img id="scissors" src={scissors}></img>
                 </button>
             </div>
