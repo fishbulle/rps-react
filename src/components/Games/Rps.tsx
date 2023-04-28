@@ -21,19 +21,28 @@ function Rps() {
 
     useEffect(() => {
         const fetchGameInfo = () => {
-            gameService.getInfo()
-                .then(res => {
-                    setGames(res.data)
-                    setPlayer1(res.data.playerOne.username)
-                    setResult(res.data.result)
-                    setPlayer1Move(res.data.playerOneMove)
-                    setPlayer2Move(res.data.playerTwoMove)
-                    console.log(res.data)
+            gameService.getInfo().then(res => {
+                setGames(res.data)
+                setPlayer1(res.data.playerOne.username)
+                console.log(res.data)
 
-                    if (res.data.playerTwo !== null) {
-                        setPlayer2(res.data.playerTwo.username)
+                if (res.data.playerTwo !== null) {
+                    setPlayer2(res.data.playerTwo.username)
+                }
+
+                if (res.data.player1Move !== null
+                    && res.data.player2Move !== null) {
+                    setResult(res.data.result)
+
+                    if (sessionStorage.getItem('token') === res.data.playerOne.playerId) {
+                        setPlayer1Move(res.data.playerOneMove)
+                        setPlayer2Move(res.data.player2Move)
+                    } else if (sessionStorage.getItem('token') === res.data.playerTwo.playerId) {
+                        setPlayer2Move(res.data.playerTwoMove)
+                        setPlayer1Move(res.data.player1Move)
                     }
-                })
+                }
+            })
                 .catch(error => setError(error.message))
         }
 
