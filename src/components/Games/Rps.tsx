@@ -12,10 +12,10 @@ import { FaExclamation } from 'react-icons/fa'
 
 function Rps() {
     const { games, setGames, error, setError } = useGames()
-    const [player1, setPlayer1] = useState('')
-    const [player2, setPlayer2] = useState(null)
-    const [player1Move, setPlayer1Move] = useState('')
-    const [player2Move, setPlayer2Move] = useState('')
+    const [player, setPlayer] = useState('')
+    const [opponent, setOpponent] = useState(null)
+    const [playerOneMove, setPlayerMove] = useState('')
+    const [opponentMove, setOpponentMove] = useState('')
     const [result, setResult] = useState('')
     const [disable, setDisable] = useState(false)
 
@@ -23,23 +23,23 @@ function Rps() {
         const fetchGameInfo = () => {
             gameService.getInfo().then(res => {
                 setGames(res.data)
-                setPlayer1(res.data.playerOne.username)
+                setPlayer(res.data.playerOne.username)
                 console.log(res.data)
 
                 if (res.data.playerTwo !== null) {
-                    setPlayer2(res.data.playerTwo.username)
+                    setOpponent(res.data.playerTwo.username)
                 }
 
-                if (res.data.player1Move !== null
-                    && res.data.player2Move !== null) {
+                if (res.data.playerOneMove !== null
+                    && res.data.playerTwoMove !== null) {
                     setResult(res.data.result)
 
                     if (sessionStorage.getItem('token') === res.data.playerOne.playerId) {
-                        setPlayer1Move(res.data.playerOneMove)
-                        setPlayer2Move(res.data.player2Move)
+                        setPlayerMove(res.data.playerOneMove)
+                        setOpponentMove(res.data.playerTwoMove)
                     } else if (sessionStorage.getItem('token') === res.data.playerTwo.playerId) {
-                        setPlayer2Move(res.data.playerTwoMove)
-                        setPlayer1Move(res.data.player1Move)
+                        setPlayerMove(res.data.playerOneMove)
+                        setOpponentMove(res.data.playerTwoMove)
                     }
                 }
             })
@@ -79,15 +79,15 @@ function Rps() {
                 </div>
                 <div className="boxes">
                     <div className="box-1">
-                        <p className="player1">{player1}</p>
+                        <p className="player1">{player}</p>
                         <div className="white-box">
-                            <p className="p1">{player1Move}</p>
+                            <p className="p1">{playerOneMove}</p>
                         </div>
                     </div>
                     <div className="box-2">
-                        <p className="player2">{player2 ? player2 : 'Opponent missing'}</p>
+                        <p className="player2">{opponent ? opponent : 'Opponent missing'}</p>
                         <div className="white-box">
-                            <p className="p2">{player2Move}</p>
+                            <p className="p2">{opponentMove}</p>
                         </div>
                     </div>
                 </div>
