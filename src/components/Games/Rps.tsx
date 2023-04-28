@@ -17,7 +17,7 @@ function Rps() {
     const [player1Move, setPlayer1Move] = useState('')
     const [player2Move, setPlayer2Move] = useState('')
     const [result, setResult] = useState('')
-    const [disable, setDisable] = useState(false)
+    const [disable, setDisable] = useState(true)
 
     useEffect(() => {
         const fetchGameInfo = () => {
@@ -30,8 +30,9 @@ function Rps() {
                     setPlayer2Move(res.data.playerTwoMove)
                     console.log(res.data)
 
-                    if (res.data.playerTwo !== null)
+                    if (res.data.playerOne && res.data.playerTwo)
                         setPlayer2(res.data.playerTwo.username)
+                        setDisable(false)
                 })
                 .catch(error => setError(error.message))
         }
@@ -58,11 +59,14 @@ function Rps() {
                 setPlayer2Move(res.data.playerTwoMove)
             })
             .catch(error => setError(error.message))
+
+        if (player1Move || player2Move)
+            setDisable(true)
     }        
 
     return (
         <>
-            <center>{error && <p>You have to wait for another player to connect....</p>}</center>
+            <center>{error && <p>Something went wrong! Try refreshing the page....</p>}</center>
             <div className="container">
                 <div className="rules">
                     <h2>What will you choose?</h2>

@@ -41,6 +41,7 @@ const PlayerName = () => {
                     id="username"
                     type="text"
                     placeholder="*meow*"
+                    autoComplete="off"
                     value={username}
                     onChange={e => setUsername(e.target.value)} required />
                 <button className="playButton" onClick={() => handleUsername(username)}>Let's Play!</button>
